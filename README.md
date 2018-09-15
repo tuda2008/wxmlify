@@ -1,5 +1,5 @@
 # Wxmlify
-一个轻量快速的插件，帮助你在微信小程序中显示富文本编辑器生成的HTML。
+一个轻量快速的插件，帮助你在支付宝小程序中显示富文本编辑器生成的HTML。
 #### 注：新版微信小程序已提供`<rich-text>`富文本组件，但其兼容性暂时没有保证，你可能还是需要第三方解析工具。
 
 ![](https://media.giphy.com/media/l4pTa5Eu6JJxI2o1i/giphy.gif)
@@ -27,21 +27,41 @@
 var Wxmlify = require('../../wxmlify/wxmlify.js')
 
 Page({
+  data: {
+    description: ''
+  },
   onLoad() {
-    // 以任何方式获得要解析的Html代码
-    var html = getHTMLStringSomehow() 
+        my.httpRequest({
+          url: 'your request url',
+          success(res){
+            console.log('xxx App Show');
+            self.setData({
+              description: res.data.description,
+            });
+          }
+        });
 
-    // new 一个 wxmlify 实例就好了
-    var wxmlify = new Wxmlify(html, this, {})
+        var wxmlify = '';
+        setTimeout(function() {
+          // new 一个 wxmlify 实例就好了
+          var wxmlify = new Wxmlify(self.data.description, self, {
+            preserveStyles: ['fontSize', 'fontWeight', 'fontStyle', 'color', 'textDecoration', 'textAlign', 'backgroundColor', 'background'],
+            dataKey: 'description',
+            disableImagePreivew: false,
+            onImageTap: function(e) {
+              //console.log(e)
+            }
+          });
+        }, 1000);
   }
 })
 ```
 3. 在对应的页面 wxml 中引入模板，比如：
 ```html
-<!-- pages/index/index.wxml  -->
-<import src="../../wxmlify/wxmlify.wxml" />
+<!-- pages/index/index.axml  -->
+<import src="../../wxmlify/wxmlify.axml" />
 
-<template is="wxmlify" data="{{nodes: wxmlified}}"></template>
+<template is="wxmlify" data="{{nodes: description}}"></template>
 ```
 ---
 
@@ -69,7 +89,7 @@ new Wxmlify(html, this, {
   dataKey: 'myRichText'
 })
 ```
-相应地在wxml中：
+相应地在axml中：
 ```html
 <template is="wxmlify" data="{{nodes: myRichText}}"></template>
 ```

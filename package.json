@@ -1,7 +1,7 @@
 {
   "name": "wxmlify",
   "version": "1.2.0",
-  "description": "一个轻量快速的插件，帮助你在微信小程序中显示富文本编辑器生成的HTML。",
+  "description": "一个轻量快速的插件，帮助你在支付宝小程序中显示富文本编辑器生成的HTML。",
   "main": "wxmlify/wxmlify.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,25 +10,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhanziyang/wxmlify.git"
+    "url": "git+https://github.com/tuda2008/wxmlify.git"
   },
   "keywords": [
     "wxml",
     "wxmlify",
     "weixin",
     "weapp",
-    "wechat",
+    "alipay",
     "parse",
     "html",
     "rich-text",
     "parser"
   ],
-  "author": "zhanziyang",
+  "author": "tuda2008",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zhanziyang/wxmlify/issues"
+    "url": "https://github.com/tuda2008/wxmlify/issues"
   },
-  "homepage": "https://github.com/zhanziyang/wxmlify#readme",
+  "homepage": "https://github.com/tuda2008/wxmlify#readme",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-plugin-external-helpers": "^6.22.0",
